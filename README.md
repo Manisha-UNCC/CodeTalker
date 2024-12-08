@@ -78,12 +78,12 @@ gdown --id '1RszIMsxcWX7WPlaODqJvax8M_dnCIzk5' --output vocaset/vocaset_stage1.p
 7.	Create a Streamlit App (app.py):
     Build a Streamlit interface to upload an audio file and select animation parameters (dataset, style, subject).
     Integrate the above functions to process the uploaded audio and render the 3D facial animation.
-   Example Streamlit components:
-   import streamlit as st
-   st.title("3D Facial Animation Generator")
-   uploaded_file = st.file_uploader("Upload Audio File (.wav)", type=["wav"])
-   if uploaded_file is not None:
-   st.write("Processing...")
+    Example Streamlit components:
+    import streamlit as st
+    st.title("3D Facial Animation Generator")
+    uploaded_file = st.file_uploader("Upload Audio File (.wav)", type=["wav"])
+    if uploaded_file is not None:
+    st.write("Processing...")
     # Call the function to generate the animation
 8.	Run the Streamlit App Locally:
     Use the following command to run the Streamlit app locally: 
