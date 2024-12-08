@@ -58,7 +58,56 @@ Install additional system libraries:
 
 ---
 
-## 3. **Download Resources**
+## 3.Hosting on Cloud
+Build the Real-Time Application Using Streamlit
+1.	Clone the Repository and Install Dependencies:
+    Clone the CodeTalker repository locally and install all required libraries and dependencies mentioned in the setup guide.
+    Ensure Python 3.8 and OpenGL-related libraries are installed for compatibility.
+2.	git clone https://github.com/Doubiiu/CodeTalker.git
+3.	cd CodeTalker
+4.	pip install -r requirements.txt
+5.	Prepare Pretrained Models and Templates:
+    Download the VOCASET and BIWI pretrained model weights and templates as detailed in the setup guide.
+Example:
+gdown --id '1RszIMsxcWX7WPlaODqJvax8M_dnCIzk5' --output vocaset/vocaset_stage1.pth.tar
+6.	Write Functions for Facial Animation:
+    Write separate functions in a script (e.g., functions.py) for: 
+    Loading the pretrained models.
+    Generating 3D facial animations from input audio.
+    Ensure these functions replicate the pipeline for running VOCASET and BIWI demos.
+7.	Create a Streamlit App (app.py):
+    Build a Streamlit interface to upload an audio file and select animation parameters (dataset, style, subject).
+    Integrate the above functions to process the uploaded audio and render the 3D facial animation.
+Example Streamlit components:
+import streamlit as st
+
+st.title("3D Facial Animation Generator")
+uploaded_file = st.file_uploader("Upload Audio File (.wav)", type=["wav"])
+if uploaded_file is not None:
+    st.write("Processing...")
+    # Call the function to generate the animation
+8.	Run the Streamlit App Locally:
+    Use the following command to run the Streamlit app locally: 
+    streamlit run app.py
+9.	Integrate Ngrok with Streamlit for Browser Access:
+    Since Streamlit doesn’t work directly in Colab, integrate Ngrok to expose the local server to a public URL.
+    Create an Ngrok account and obtain an NGROK_AUTH_TOKEN.
+10.	Update the Streamlit Code to Use Ngrok:
+    Modify the Streamlit app to integrate with Ngrok: 
+    from pyngrok import ngrok
+
+    # Start the Streamlit app
+    public_url = ngrok.connect(port=8501)
+    print("Streamlit app is live at:", public_url)
+11.	Run the Combined App in Colab:
+    Use Colab to execute the Streamlit app integrated with Ngrok.
+    Ensure the pretrained models and other dependencies are available in the Colab environment.
+12.	Access the App via Ngrok URL:
+    Use the Ngrok-provided URL to access and interact with the Streamlit-based real-time application in a browser.
+
+
+
+## 4. **Download Resources**
 
 Clone the project repository and install any required submodules:
 
@@ -192,7 +241,7 @@ Download pretrained model weights and templates for VOCASET and BIWI datasets:
 
 ---
 
-## 4. **Running Pre-Built Demos**
+## 5. **Running Pre-Built Demos**
 
 ### VOCASET Demo
 
@@ -212,7 +261,7 @@ Run the following commands for the BIWI dataset:
 
 ---
 
-## 5. **Generating Custom Animations**
+## 6. **Generating Custom Animations**
 
 ### Step 1: Upload Your Audio File
 
@@ -255,7 +304,7 @@ Modify the configuration file with your selections and generate the animation:
 
 ---
 
-## 6. **Viewing Outputs**
+## 7. **Viewing Outputs**
 
 View the generated animation directly in Colab:
 
@@ -546,7 +595,7 @@ xdg-open demo/output/<generated_video>.mp4
 
 ---
 
-## **7. Troubleshooting**
+## **8. Troubleshooting**
 
 1. **Python Version Issues**:
    - Ensure Python 3.8 is correctly installed and set as default.
